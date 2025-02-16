@@ -10,7 +10,8 @@ Este projeto utiliza o kit de desenvolvimento **BitDogLab** com a placa **Raspbe
 ---
 
 ## 📸 Demonstração  
-*(Adicione aqui imagens ou vídeos do projeto funcionando!)*  
+*🎥 [Assista ao vídeo no Google Drive](https://drive.google.com/file/d/1mZjT8pG70cVM45tFM_qZFiQH78tezaNR/view?usp=drive_link)
+*  
 
 ---
 ## 🚀 Como Funciona?
