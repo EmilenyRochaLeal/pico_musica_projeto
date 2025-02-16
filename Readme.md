@@ -32,18 +32,19 @@ Este projeto utiliza o kit de desenvolvimento **BitDogLab** com a placa **Raspbe
 
 ## 📂 Estrutura do Projeto
 
-📦 pico_musica_projeto 
-┣ 📂 inc # Arquivos de cabeçalho (.h) ┃ 
-┣ 📜 notes.h # Definição das notas musicais ┃ 
-┣ 📜 play_audio.h # Declarações para controle do buzzer e LEDs ┃ 
-┣ 📜 ssd1306.h # Biblioteca para comunicação com OLED ┃ 
-┣ 📜 ssd1306_i2c.h # Comunicação via I2C com OLED 
-┣ 📂 src # Código-fonte principal (.c) ┃ 
-┣ 📜 display_oled.c # Exibição da bandeira no OLED, além de tocar áudio e sincronizar LEDs.┃
-┣ 📜 play_audio.c # Controle do buzzer e LEDs sincronizados ┃ 
-┣ 📜 ssd1306_i2c.c # Implementação da comunicação I2C com OLED 
-┣ 📜 CMakeLists.txt # Configuração do projeto para compilação 
-┣ 📜 README.md # Este arquivo de documentação
+📦 **pico_musica_projeto**  
+ ┣ 📂 **inc** *(Arquivos de cabeçalho - .h)*  
+ ┃ ┣ 📜 **notes.h** – Definição das notas musicais  
+ ┃ ┣ 📜 **play_audio.h** – Declarações para controle do buzzer e LEDs  
+ ┃ ┣ 📜 **ssd1306.h** – Biblioteca para comunicação com OLED  
+ ┃ ┣ 📜 **ssd1306_i2c.h** – Comunicação via I2C com OLED  
+ ┣ 📂 **src** *(Código-fonte principal - .c)*  
+ ┃ ┣ 📜 **display_oled.c** – Exibição da bandeira no OLED, além de tocar áudio e sincronizar LEDs  
+ ┃ ┣ 📜 **play_audio.c** – Controle do buzzer e LEDs sincronizados  
+ ┃ ┣ 📜 **ssd1306_i2c.c** – Implementação da comunicação I2C com OLED  
+ ┣ 📜 **CMakeLists.txt** – Configuração do projeto para compilação  
+ ┣ 📜 **README.md** – Este arquivo de documentação  
+
 
 
 ## 🏆 Créditos
