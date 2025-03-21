@@ -11,6 +11,7 @@
 
 // Definição do pino do buzzer
 const uint BUZZER = 21;
+const test; 
 
 // Alterna a cor do LED RGB a cada nota
 void set_rgb_color(int step) {
