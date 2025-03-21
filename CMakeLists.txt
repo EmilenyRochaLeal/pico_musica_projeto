@@ -39,6 +39,7 @@ add_executable(display_oled
     src/display_oled.c
     src/play_audio.c
     src/ssd1306_i2c.c
+    src/play_button.c
 )
 
 

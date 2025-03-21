@@ -30,6 +30,8 @@ Este projeto utiliza o kit de desenvolvimento **BitDogLab** com a placa **Raspbe
 ### 💡 LEDs Sincronizados  
 - **LEDs piscam conforme a frequência** das notas musicais.   
 
+### Alternar entre músicas
+
 
 ## 📂 Estrutura do Projeto
 

@@ -3,54 +3,85 @@
 #include "hardware/pwm.h"
 #include "notes.h"
 
+
 // Definição dos LEDs (para um LED RGB)
-#define LED_RED 12
-#define LED_GREEN 13  // LED Verde no pino 13
-#define LED_BLUE 14
+#define LEDR 12
+#define LEDG 11
+#define LEDB 13
 
 // Definição do pino do buzzer
 const uint BUZZER = 21;
 
+// Alterna a cor do LED RGB a cada nota
+void set_rgb_color(int step) {
+    switch (step % 3) {
+        case 0:
+            gpio_put(LEDR, 1);
+            gpio_put(LEDG, 0);
+            gpio_put(LEDB, 0);
+            break;
+        case 1:
+            gpio_put(LEDR, 0);
+            gpio_put(LEDG, 1);
+            gpio_put(LEDB, 0);
+            break;
+        case 2:
+            gpio_put(LEDR, 0);
+            gpio_put(LEDG, 0);
+            gpio_put(LEDB, 1);
+            break;
+    }
+}
+
+
 // Configuração do PWM para tocar uma nota
 void play_note(uint pin, uint16_t frequency) {
     uint slice = pwm_gpio_to_slice_num(pin);
-
+    
     if (frequency == 0) {
         pwm_set_enabled(slice, false); // Silencia o buzzer
-        gpio_put(LED_RED, 0);   // Desliga LED Vermelho
-        gpio_put(LED_GREEN, 0); // Desliga LED Verde
-        gpio_put(LED_BLUE, 0);  // Desliga LED Azul
+        gpio_put(LEDR, 0);   // Desliga LED Vermelho
+        gpio_put(LEDG, 0); // Desliga LED Verde
+        gpio_put(LEDB, 0);  // Desliga LED Azul
         return;
     }
-
+    
     uint wrap = (125000000 / 16) / frequency;  
-
+    
     pwm_set_wrap(slice, wrap);
     pwm_set_gpio_level(pin, wrap / 2);
     pwm_set_enabled(slice, true);
-
-    // Acender apenas o LED Verde
-    gpio_put(LED_RED, 0);   // Desliga Vermelho
-    gpio_put(LED_GREEN, 1); // Acende Verde
-    gpio_put(LED_BLUE, 0);  // Desliga Azul
+    
 }
 
 // Função para tocar a melodia
 void play_melody(uint pin) {
-    for (int i = 0; i < SONG_LENGTH; i++) {  // Certifique-se de que SONG_LENGTH está definida
+    for (int i = 0; i < SONG_LENGTH; i++) {  
+        set_rgb_color(i);
+
+        // Certifique-se de que SONG_LENGTH está definida
         int note_duration = 1000 / durations[i]; // Ajusta a duração da nota
         play_note(pin, melody[i]);  
         sleep_ms(note_duration); 
         
         // Silencia a nota e desliga os LEDs
         pwm_set_enabled(pwm_gpio_to_slice_num(pin), false);
-        gpio_put(LED_RED, 0);
-        gpio_put(LED_GREEN, 0); // Desliga o LED Verde
-        gpio_put(LED_BLUE, 0);
-
         sleep_ms(50); // Pequena pausa entre as notas
     }
 }
+
+
+void stop_music() {
+    // Para parar o buzzer, desativar o PWM no pino do buzzer
+    uint slice = pwm_gpio_to_slice_num(BUZZER);
+    pwm_set_enabled(slice, false); // Desliga o PWM do buzzer
+
+    // Desliga os LEDs
+    gpio_put(LEDR, 0);
+    gpio_put(LEDG, 0);
+    gpio_put(LEDB, 0);
+}
+
 
 // Configuração inicial
 void setup_audio() {
@@ -61,19 +92,17 @@ void setup_audio() {
     uint slice = pwm_gpio_to_slice_num(BUZZER);
     pwm_set_clkdiv(slice, 16.0);
     pwm_set_enabled(slice, false);
-
+    
     // Inicializa LEDs
-    gpio_init(LED_RED);
-    gpio_init(LED_GREEN);
-    gpio_init(LED_BLUE);
-    gpio_set_dir(LED_RED, GPIO_OUT);
-    gpio_set_dir(LED_GREEN, GPIO_OUT);
-    gpio_set_dir(LED_BLUE, GPIO_OUT);
-
-    // Garante que os LEDs comecem desligados
-    gpio_put(LED_RED, 0);
-    gpio_put(LED_GREEN, 0);
-    gpio_put(LED_BLUE, 0);
+    gpio_init(LEDR);
+    gpio_init(LEDG);
+    gpio_init(LEDB);
+    gpio_set_dir(LEDR, GPIO_OUT);
+    gpio_set_dir(LEDG, GPIO_OUT);
+    gpio_set_dir(LEDB, GPIO_OUT);
+    gpio_put(LEDR, 0);
+    gpio_put(LEDG, 0);
+    gpio_put(LEDB, 0);
 }
 
 // Executa a música

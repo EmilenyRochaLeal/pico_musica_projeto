@@ -7,14 +7,17 @@
 #include "ssd1306.h"
 #include "hardware/i2c.h"
 #include "play_audio.h"
+#include "play_button.h"
 
 const uint I2C_SDA = 14;
 const uint I2C_SCL = 15;
+
 
 int main()
 {
     stdio_init_all();   // Inicializa os tipos stdio padrão presentes ligados ao binário
     setup_audio();
+	setup_button();
 
     // Inicialização do i2c
     i2c_init(i2c1, ssd1306_i2c_clock * 1000);
@@ -141,9 +144,12 @@ restart:
     ssd1306_draw_bitmap(&ssd_bm, bitmap_128x64);
 
     while(true) {
+		// check_button_and_stop_music();
+    	// sleep_ms(10); 
 		main_audio();
         sleep_ms(1000);
     }
 
     return 0;
 }
+
