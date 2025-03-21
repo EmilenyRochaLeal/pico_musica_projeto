@@ -1,11 +1,12 @@
 # 🎵 Pico Música Projeto 🇧🇷
 
-Projeto desenvolvido para a etapa final do programa **EmbarcaTech**.  
+Projeto desenvolvido para a etapa final e aprimorado na fase de nivelamento do programa **EmbarcaTech**.  
 Este projeto utiliza o kit de desenvolvimento **BitDogLab** com a placa **Raspberry Pi Pico** para:
 
 ✅ **Exibir a bandeira do Brasil** em um display OLED 📺  
 ✅ **Tocar o Hino Nacional Brasileiro** através de um buzzer 🎶  
 ✅ **Sincronizar LEDs** piscando conforme a melodia ✨  
+✅ **Alternar cores Rgb** piscando conforme a melodia ✨  
 
 ---
 
@@ -66,5 +67,5 @@ Este projeto utiliza o kit de desenvolvimento **BitDogLab** com a placa **Raspbe
 ## 🏆 Créditos
 
 - 👤 **Desenvolvedora:** [Emileny Leal]
-- 📅 **Data:** Fevereiro de 2025
-- 🏫 **Projeto Final - EmbarcaTech**
+- 📅 **Data:** Março de 2025
+- 🏫 **Projeto Final (Aprimorado) - EmbarcaTech**
