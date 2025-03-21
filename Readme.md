@@ -27,10 +27,23 @@ Este projeto utiliza o kit de desenvolvimento **BitDogLab** com a placa **Raspbe
 - O buzzer é controlado pela **`hardware/pwm.h`** do **Raspberry Pi Pico**.  
 - Inicializa a saída PWM do buzzer no pino 21, os LEDs como saída digital, garantir que todos os LEDs começam desligados no arquivo **`play_audio.c`**
 
-### 💡 LEDs Sincronizados  
-- **LEDs piscam conforme a frequência** das notas musicais.   
+### 💡 LEDs Sincronizados: Funcionamento dos LEDs RGB no Projeto Musical
 
-### Alternar entre músicas
+- Os **LEDs piscam conforme a frequência** das notas musicais.
+- Os **LEDs RGB** têm a função de **sintonizar efeitos visuais com a melodia** tocada pelo buzzer, proporcionando uma experiência multimodal (som + luz).
+
+---
+
+#### 🔌 Componentes Utilizados
+- **LED RGB de cátodo comum**
+- **Pinos utilizados:**
+  - `LEDR` → GPIO **12** (🔴 Vermelho)
+  - `LEDG` → GPIO **11** (🟢 Verde)
+  - `LEDB` → GPIO **13** (🔵 Azul)
+
+---
+
+
 
 
 ## 📂 Estrutura do Projeto
